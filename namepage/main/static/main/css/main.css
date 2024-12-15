@@ -55,4 +55,12 @@ main .features {
 }
 
 main .features h1 {font-size: 100px;}
-main .features p {max-width: 600px; margin: 30px auto}
+main .features p {max-width: 400px; margin: 30px auto}
+
+.alert-warning {
+    float: left;
+    clear: both;
+    width: 400px;
+    margin: 10px 36%;
+    text-align: center;
+}
