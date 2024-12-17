@@ -64,3 +64,10 @@ main .features p {max-width: 400px; margin: 30px auto}
     margin: 10px 36%;
     text-align: center;
 }
+
+
+form {
+    margin-left: 30%;
+    width: 550px;
+    margin-top: 40px;
+}
