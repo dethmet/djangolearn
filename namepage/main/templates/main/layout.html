@@ -12,14 +12,17 @@
 <body>
     <aside>
         <img src="{% static 'main/img/ava.jpg' %}" alt="Аватарка">
-        <span class="logo">Nikolay</span>
-        <h3>Навигация йоптать</h3>
+        <span class="logo"> Персональный сайт Николая Майстренко </span>
+        <h3>Навигация</h3>
         <ul>
-            <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i> Главная</li></a>
-            <a href="{% url 'about' %}"><li><i class="fa-solid fa-mountain-sun"></i> Про Северный кавказ</li></a>
+            <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i> Главная страница</li></a>
+            <a href="{% url 'about' %}"><li><i class="fa-solid fa-mountain-sun"></i> Про меня</li></a>
             <a href="{% url 'news_home' %}"><li><i class="fa-solid fa-book"></i> Новости</li></a>
-            <a href=""><li><i class="fa-solid fa-phone"></i> Связь с нами</li></a>
-            <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus"></i> Нактнуть на вентилятор</button></li></a>
+            <a href="{% url 'sociate' %}"><li><i class="fa-solid fa-phone"></i> Контакты</li></a>
+            <a href="{% url 'electro' %}"><li><i class="fa-solid fa-phone"></i> Я электромонтажник</li></a>
+            <a href="{% url 'developer' %}"><li><i class="fa-solid fa-phone"></i> Я программист</li></a>
+            <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fas fa-plus"></i> Добавить отзыв обо мне</button></li></a>
+            
         </ul>
     </aside>
     <main>

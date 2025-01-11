@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{ title }}</h1>
+        <p>
+            Если хотите связаться со мной, вот мои контакты:
+        </p>
+        {% for el in values %}
+            {% if el == 'Что-то' %}
+                {% filter upper %}
+                    <p>{{ el }}</p>
+                {% endfilter %}
+            {% endif %}
+        {% endfor %}
+
+        {% for el in obj %}
+            <p>{{ el }}</p>
+        {% endfor %}
+        <a href="{% url 'home' %}"><button class="btn btn-info">На главную</button></a>
+    </div>
+{% endblock %}
