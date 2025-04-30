@@ -1,4 +1,50 @@
-from django.http import HttpResponse
+from django.db.models import F
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from django.views import generic
+from django.utils import timezone
 
-def index(request):
-    return HttpResponse('Шолом, дорогой друг. Это, таки, лучшая страница в твоей жизни.')
+from .models import Choice, Question
+
+
+class IndexView(generic.ListView):
+    template_name = "nikolai/index.html"
+    context_object_name = "latest_question_list"
+
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[
+            :5
+        ]
+
+
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = "nikolai/detail.html"
+
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
+
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = "nikolai/results.html"
+
+
+def vote(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST["choice"])
+    except (KeyError, Choice.DoesNotExist):
+        return render(
+            request,
+            "nikolai/detail.html",
+            {
+                "question": question,
+                "error_message": "Ты не выбрал вариант ответа, пес",
+            },
+        )
+    else:
+        selected_choice.votes = F("votes") + 1
+        selected_choice.save()
+        return HttpResponseRedirect(reverse("nikolai:results", args=(question.id,)))

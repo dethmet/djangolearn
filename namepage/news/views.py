@@ -43,3 +43,24 @@ def create(request):
 
 
     return render(request, 'news/create.html', date)
+
+
+def electro(request):
+    return render(request, 'news/electro.html')
+
+
+def developer(request):
+    return render(request, 'news/developer.html')
+
+
+def sociate(request):
+    data = {
+        'title': 'Самая главная страница!!',
+        'values': ['Что-то', 'Еще что-то', 'циферки 123'],
+        'obj': {
+            'car': 'Жига',
+            'age': 30,
+            'hobby': 'DotA 2'
+        }
+    }
+    return render(request, 'news/sociate.html', data)

@@ -10,19 +10,19 @@ class ArticlesForm(ModelForm):
         widgets = {
             'title': TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Назови наброс'
+                'placeholder': 'Название'
             }),
             'anons': TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Заинтригуй'
+                'placeholder': 'Анонс'
             }),
             'main_text': Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Набрасывай во всю!!!'
+                'placeholder': 'Основной текст'
             }),            
             'date': DateTimeInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Дата наброса',
+                'placeholder': 'Дата публикации',
                 'type': 'datetime-local'                
             })
         }
